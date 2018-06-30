@@ -3,9 +3,10 @@ LABEL maintainer "Fco. Javier Delgado del Hoyo <frandelhoyo@gmail.com>"
 
 COPY ["run.sh", "backup.sh", "restore.sh", "/"]
 
-ENV TZ="Asia/Shanghai"
+ENV TZ=Asia/Shanghai
 
-RUN apk add --update bash mysql-client gzip tzdata \
+RUN apk update \
+  && apk add bash mysql-client gzip tzdata \
   && cp /usr/share/zoneinfo/$TZ /etc/localtime \
   && echo $TZ >  /etc/timezone \
   && apk del tzdata \
