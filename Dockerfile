@@ -8,7 +8,7 @@ ENV TZ="Asia/Shanghai"
 RUN apk add --update bash mysql-client gzip tzdata \
   && cp /usr/share/zoneinfo/$TZ /etc/localtime \
   && echo $TZ >  /etc/timezone \
-  && apk del tzdata
+  && apk del tzdata \
   && rm -rf /var/cache/apk/* \
   && mkdir /backup \
   && chmod u+x /backup.sh /restore.sh
